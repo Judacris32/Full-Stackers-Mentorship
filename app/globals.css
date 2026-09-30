@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------
+   Ocean Breeze — #0B3D91 primary · #3BA7F2 secondary
+                  #7FE7D6 tertiary · #E8F6FF background
+   Light mode is the default. Colours are stored as RGB channels so
+   Tailwind opacity modifiers (bg-brand/10 etc.) work.
+---------------------------------------------------------------- */
+:root {
+  --bg: 240 249 255;
+  --bg-2: 232 246 255;      /* #E8F6FF */
+  --surface: 255 255 255;
+  --surface-2: 220 239 252;
+  --ink: 8 27 61;
+  --muted: 70 90 125;
+  --brand: 11 61 145;       /* primary — buttons */
+  --brand-ink: 255 255 255;
+  --accent: 59 167 242;     /* secondary */
+  --highlight: 127 231 214; /* tertiary */
+  --glow-a: 59 167 242;
+  --glow-b: 127 231 214;
+  --glow-strength: 0.16;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: 5 16 38;
+  --bg-2: 8 24 54;
+  --surface: 12 31 66;
+  --surface-2: 17 42 86;
+  --ink: 232 246 255;
+  --muted: 158 184 218;
+  --brand: 59 167 242;
+  --brand-ink: 5 16 38;
+  --accent: 127 231 214;
+  --highlight: 127 231 214;
+  --glow-a: 11 61 145;
+  --glow-b: 59 167 242;
+  --glow-strength: 0.45;
+  color-scheme: dark;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-bg text-ink font-sans antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  h1, h2, h3, h4 { @apply font-display; letter-spacing: -0.025em; }
+  /* The italic serif accent used inside headings: <h2>Learn with <em>people</em></h2> */
+  h1 em, h2 em, .accent-serif {
+    font-family: "Instrument Serif", Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: rgb(var(--brand));
+  }
+  ::selection { background: rgb(127 231 214 / 0.6); color: #06142E; }
+  :focus-visible { outline: 2px solid rgb(var(--accent)); outline-offset: 3px; border-radius: 8px; }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200;
+  }
+  .btn-primary { @apply btn bg-brand text-brand-ink shadow-[0_10px_30px_-12px_rgb(var(--brand)/0.7)] hover:-translate-y-0.5 hover:shadow-[0_16px_36px_-12px_rgb(var(--brand)/0.8)]; }
+  .btn-ghost { @apply btn border border-ink/10 bg-surface/70 text-ink backdrop-blur hover:border-brand/40 hover:bg-surface; }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-brand/15 bg-brand/[0.06] px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand;
+  }
+  .card { @apply rounded-[28px] border border-ink/[0.08] bg-surface shadow-card; }
+
+  /* ---- Backgrounds: no section is a flat colour ---- */
+  .bg-aurora {
+    background:
+      radial-gradient(60% 50% at 85% 0%, rgb(var(--glow-a) / var(--glow-strength)), transparent 70%),
+      radial-gradient(45% 45% at 0% 30%, rgb(var(--glow-b) / var(--glow-strength)), transparent 70%),
+      linear-gradient(180deg, rgb(var(--bg)), rgb(var(--bg-2)));
+  }
+  .bg-tint {
+    background:
+      radial-gradient(50% 60% at 100% 100%, rgb(var(--glow-b) / calc(var(--glow-strength) * 0.8)), transparent 70%),
+      linear-gradient(180deg, rgb(var(--bg-2)), rgb(var(--bg)));
+  }
+  .bg-deep {
+    background:
+      radial-gradient(55% 60% at 10% 0%, rgb(59 167 242 / 0.35), transparent 70%),
+      radial-gradient(50% 60% at 100% 100%, rgb(127 231 214 / 0.22), transparent 70%),
+      linear-gradient(135deg, #0B3D91, #06142E);
+  }
+  .grid-lines {
+    background-image:
+      linear-gradient(rgb(var(--ink) / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(var(--ink) / 0.05) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+  .dots {
+    background-image: radial-gradient(rgb(var(--ink) / 0.12) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+  .fade-mask { mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%); }
+  .marquee-mask { mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent); }
+
+  /* brand icons that are near-black (Next.js, GitHub…) switch to light ink in dark mode */
+  .dark [data-dark-icon="true"] { color: rgb(var(--ink)) !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
