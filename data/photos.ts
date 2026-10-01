@@ -13,7 +13,7 @@ export const photos = {
   heroSession: { src: "/hero/hero-4.jpg", alt: "A mentor explaining a concept to two mentees around a laptop", credit: "FMP" },
 
   // "Why we started FMP" feature image — FMP's own (public/why)
-  whyTeam: { src: "/why/why-fmp.jpg", alt: "A mentor walking three mentees through something on a laptop", credit: "FMP" },
+  whyTeam: { src: "/why/why-fmp.png", alt: "A mentor walking three mentees through something on a laptop", credit: "FMP" },
 
   // Mentors page — FMP's own (public/mentors-page)
   mentorsHero: { src: "/mentors-page/hero.jpg", alt: "A mentor's desk at dusk with a mentor-session notebook, laptop and mentorship books", credit: "FMP" },
