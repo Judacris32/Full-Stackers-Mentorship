@@ -1,27 +1,9 @@
 "use client";
 
-import { ArrowRight, ArrowUp, ArrowUpRight, Mail, MapPin } from "lucide-react";
+import { ArrowRight, ArrowUp, MapPin } from "lucide-react";
 import Link from "next/link";
 import { contact, nav, tracks } from "@/data/site";
 import { Logo } from "./Logo";
-
-const socials = [
-  {
-    label: "LinkedIn",
-    href: "#",
-    path: "M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11.5H3V9.75Zm6.5 0h3.8v1.6h.06c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.77 2.55 4.77 5.87v6h-4v-5.3c0-1.27-.02-2.9-1.84-2.9-1.84 0-2.12 1.39-2.12 2.8v5.4h-4V9.75Z",
-  },
-  {
-    label: "X",
-    href: "#",
-    path: "M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.83-6.32L5.47 21H2.4l7.17-8.2L2 3h6.33l4.37 5.77L17.75 3Zm-1.08 16.2h1.7L7.4 4.73H5.58L16.67 19.2Z",
-  },
-  {
-    label: "Instagram",
-    href: "#",
-    path: "M12 7.2a4.8 4.8 0 1 0 0 9.6 4.8 4.8 0 0 0 0-9.6Zm0 7.9a3.1 3.1 0 1 1 0-6.2 3.1 3.1 0 0 1 0 6.2Zm6.1-8.1a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0ZM12 3.6c2.7 0 3.1 0 4.1.06 2.8.13 4.1 1.45 4.2 4.2.05 1.07.06 1.4.06 4.14s0 3.07-.06 4.14c-.13 2.74-1.43 4.07-4.2 4.2-1.07.05-1.4.06-4.1.06s-3.07 0-4.14-.06c-2.8-.13-4.07-1.47-4.2-4.2C3.6 15.07 3.6 14.74 3.6 12s0-3.07.06-4.14c.13-2.75 1.43-4.07 4.2-4.2C8.93 3.6 9.26 3.6 12 3.6Z",
-  },
-];
 
 /** A footer link: mint colour, sliding underline and a small arrow on hover. */
 function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
@@ -86,20 +68,6 @@ export function Footer() {
             <p className="mt-6 max-w-sm leading-relaxed text-ocean-mist/65">
               A mentorship community for people building careers across every part of tech, from the first line of code to the first offer letter.
             </p>
-            <div className="mt-7 flex gap-2.5">
-              {socials.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  aria-label={s.label}
-                  className="grid h-11 w-11 place-items-center rounded-full border border-white/15 bg-white/5 text-ocean-mist/80 transition-all duration-300 hover:-translate-y-1 hover:border-ocean-tertiary hover:bg-ocean-tertiary hover:text-ocean-deep hover:shadow-[0_10px_24px_-8px_rgb(127_231_214/0.6)]"
-                >
-                  <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden>
-                    <path d={s.path} />
-                  </svg>
-                </a>
-              ))}
-            </div>
           </div>
 
           <div>
@@ -125,23 +93,8 @@ export function Footer() {
           </div>
 
           <div>
-            <ColumnTitle>Talk to us</ColumnTitle>
+            <ColumnTitle>Where we are</ColumnTitle>
             <ul className="mt-6 space-y-3">
-              <li>
-                <a
-                  href={`mailto:${contact.email}`}
-                  className="group flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] p-3 transition-all duration-300 hover:border-ocean-tertiary/50 hover:bg-white/[0.08]"
-                >
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-ocean-tertiary/15 text-ocean-tertiary transition-colors group-hover:bg-ocean-tertiary group-hover:text-ocean-deep">
-                    <Mail size={17} />
-                  </span>
-                  <span className="min-w-0">
-                    <span className="block text-[11px] uppercase tracking-wider text-ocean-mist/50">Email</span>
-                    <span className="block truncate text-sm font-medium text-white">{contact.email}</span>
-                  </span>
-                  <ArrowUpRight size={16} className="ml-auto shrink-0 text-ocean-mist/40 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ocean-tertiary" />
-                </a>
-              </li>
               <li className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] p-3">
                 <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-ocean-tertiary/15 text-ocean-tertiary">
                   <MapPin size={17} />
